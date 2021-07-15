@@ -4,8 +4,8 @@ bl_info = {
     "name": "Align Viewports Views",
     "description": "Align several 3Dviews from the active one (under mouse)",
     "author": "1C0D",
-    "version": (1, 0),
-    "blender": (2, 91, 0),
+    "version": (1, 0, 1),
+    "blender": (2, 93, 0),
     "location": "View3D",
     "wiki_url": "",
     "tracker_url": "",
@@ -28,7 +28,7 @@ def align(self,context):
 class AlignViewsProperty(bpy.types.PropertyGroup):
     """A bpy.types.PropertyGroup descendant for bpy.props.CollectionProperty"""
     # it's not possible to set the name dynamically, so keept it empty
-    value = bpy.props.BoolProperty(name="")
+    value: bpy.props.BoolProperty(name="")
 
 class ALIGN_OT_ViewportsViews(bpy.types.Operator):
     """align several 3Dview regions from the active one (under mouse)"""
@@ -36,7 +36,7 @@ class ALIGN_OT_ViewportsViews(bpy.types.Operator):
     bl_label = "align viewports views"
     bl_options = {'REGISTER', 'UNDO'}
     
-    collections = bpy.props.CollectionProperty(type=AlignViewsProperty)
+    collections: bpy.props.CollectionProperty(type=AlignViewsProperty)
 
     @classmethod
     def poll(cls, context):
